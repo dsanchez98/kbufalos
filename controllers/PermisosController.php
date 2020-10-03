@@ -47,37 +47,7 @@ class PermisosController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Permisos model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    // public function actionView($id)
-    // {
-    //     return $this->render('view', [
-    //         'model' => $this->findModel($id),
-    //     ]);
-    // }
-
-    /**
-     * Creates a new Permisos model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    // public function actionCreate()
-    // {
-    //     $model = new Permisos();
-
-    //     if ($model->load(Yii::$app->request->post()) && $model->save()) {
-    //         return $this->redirect(['view', 'id' => $model->id]);
-    //     }
-
-    //     return $this->render('create', [
-    //         'model' => $model,
-    //     ]);
-    // }
-
+   
     /**
      * Updates an existing Permisos model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -157,13 +127,14 @@ class PermisosController extends Controller
         
         $model= PermisosController::findModel(1);
         if($model->activarcancion=='no'){
-        $model->activarcancion='si';
-        $model->save();
-        return $this->redirect(['index']);}
+            $model->activarcancion='si';
+            $model->save();
+            return $this->redirect(['/tables']);
+        }
         else if ($model->activarcancion=='si'){
-        $model->activarcancion='no';
-        $model->save();
-        return $this->redirect(['index']); 
+            $model->activarcancion='no';
+            $model->save();
+            return $this->redirect(['/tables']); 
         }
 
     }
@@ -174,16 +145,16 @@ class PermisosController extends Controller
 
         $model= PermisosController::findModel(1);
         if($model->activarvotos=='no'){
-        $model->activarvotos='si';
-        $model->save();
-        
-        return $this->redirect(['index']);
+            $model->activarvotos='si';
+            $model->save();
+
+            return $this->redirect(['/tables']);
         }
         else if($model->activarvotos=='si'){
                $model->activarvotos='no';
-        $model->save();
+               $model->save();
         
-        return $this->redirect(['index']);
+            return $this->redirect(['/tables']);
         }
 
     }
